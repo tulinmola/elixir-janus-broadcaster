@@ -29,10 +29,36 @@ module.exports = (env, options) => ({
         }
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.coffee$/,
+        use: [
+          {
+            loader: 'coffee-loader',
+            options: {
+              transpile: {
+                presets: ['@babel/env']
+              }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.s?css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: '../fonts'
+          }
+        }]
       }
     ]
+  },
+  resolve: {
+    extensions: [".coffee", ".js", ".scss", ".css"]
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '../css/app.css' }),

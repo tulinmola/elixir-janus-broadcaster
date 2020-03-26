@@ -40,6 +40,7 @@ defmodule Broadcaster.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:websockex, "~> 0.4.2"},
+      {:logger_file_backend, "~> 0.0.10"},
       {:uuid, "~> 1.1"}
     ]
   end

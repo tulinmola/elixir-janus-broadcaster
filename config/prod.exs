@@ -17,6 +17,14 @@ config :broadcaster, BroadcasterWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Store errors in log/error.log
+config :logger, format: "[$level] $message\n",
+  backends: [{LoggerFileBackend, :error_log}, :console]
+
+config :logger, :error_log,
+  path: "log/error.log",
+  level: :error
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

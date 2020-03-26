@@ -1,0 +1,10 @@
+<h1>Room <%= @room.id %></h1>
+
+<div data-room="<%= @room.id %>">
+  <video id="local-video" autoplay playsinline muted></video>
+  <video id="remote-video" autoplay playsinline></video>
+  <button id="join-publisher">Join as publisher</button>
+  <button id="join-subscriber">Join as subscriber</button>
+</div>
+
+<span><%= link "Back", to: Routes.room_path(@conn, :index) %></span>

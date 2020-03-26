@@ -1,0 +1,13 @@
+<h1>Rooms</h1>
+
+<ul class="rooms">
+  <%= for room <- @rooms do %>
+    <li>
+      <%= room.id %>
+      <%= link room.id, to: Routes.room_path(@conn, :show, room) %>
+      <%= link "Delete", to: Routes.room_path(@conn, :delete, room), method: :delete, data: [confirm: "Are you sure?"] %>
+    </li>
+  <% end %>
+</ul>
+
+<span><%= link "New Room", to: Routes.room_path(@conn, :new) %></span>

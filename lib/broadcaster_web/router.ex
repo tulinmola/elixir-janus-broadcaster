@@ -17,6 +17,7 @@ defmodule BroadcasterWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/rooms", RoomController, only: [:index, :new, :show, :create, :delete]
   end
 
   # Other scopes may use custom stacks.

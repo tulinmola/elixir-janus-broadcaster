@@ -9,9 +9,10 @@ defmodule Broadcaster.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      BroadcasterWeb.Endpoint
+      BroadcasterWeb.Endpoint,
       # Starts a worker by calling: Broadcaster.Worker.start_link(arg)
-      # {Broadcaster.Worker, arg},
+      {Registry, keys: :unique, name: Broadcaster.RoomRegistry},
+      {DynamicSupervisor, strategy: :one_for_one, name: Broadcaster.RoomSupervisor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

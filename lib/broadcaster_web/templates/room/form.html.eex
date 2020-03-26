@@ -1,0 +1,9 @@
+<%= form_for @conn, @action, [as: "room"], fn f -> %>
+  <%= label f, :id %>
+  <%= text_input f, :id %>
+  <%= error_tag f, :id %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
